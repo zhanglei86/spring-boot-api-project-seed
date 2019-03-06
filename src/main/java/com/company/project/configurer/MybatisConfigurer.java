@@ -34,9 +34,14 @@ public class MybatisConfigurer {
         //配置分页插件，详情请查阅官方文档
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();
+        properties.setProperty("dialect", "MySQL");
         properties.setProperty("pageSizeZero", "true");//分页尺寸为0时查询所有纪录不再执行分页
         properties.setProperty("reasonable", "true");//页码<=0 查询第一页，页码>=总页数查询最后一页
         properties.setProperty("supportMethodsArguments", "true");//支持通过 Mapper 接口参数来传递分页参数
+        // rowBound相关的
+        //properties.setProperty("offsetAsPageNum", "true");
+        //properties.setProperty("rowBoundsWithCount", "true");
+        //properties.setProperty("params", "count=countSql");
         pageHelper.setProperties(properties);
 
         //添加插件
